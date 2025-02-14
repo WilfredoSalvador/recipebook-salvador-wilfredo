@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse('Hello World!')
+    return HttpResponse('Check http://localhost:8000/recipes/list for the Recipe Book.')
 # Create your views here.
 
 def recipe_list(request):
