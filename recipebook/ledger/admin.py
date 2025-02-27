@@ -1,16 +1,17 @@
-from django.contrib import admin
+"""Module importing the admin panels"""
 
-# Register your models here.
 from django.contrib import admin
 from .models import Recipe, RecipeIngredient
 
-class TaskInline(admin.TabularInline):
+class RecipeInLine(admin.TabularInline):
+    """Class representing an Inline Admin"""
+
     model = RecipeIngredient
 
 class RecipeAdmin(admin.ModelAdmin):
-    inlines = [TaskInline,]
+    """Class for the Admin panel of Recipe model"""
+
+    inlines = [RecipeInLine,]
     model = Recipe
-    
-# registering the model and the admin is what tells
-# Django that admin pages must be generated for the models specified
+
 admin.site.register(Recipe, RecipeAdmin)
