@@ -6,8 +6,8 @@
 {% block content %}
         <ul>
             <h1> Recipe Book </h1>
-            {% for recipe in recipes %}
-            <li><a href="{{recipe.link}}">{{recipe.name}}</a></li>
+            {% for recipe in object_list %}
+            <li><a href="{{recipe.get_absolute_url}}">{{recipe}}</a></li>
             {% endfor %}
             
         </ul>
