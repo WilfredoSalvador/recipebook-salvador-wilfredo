@@ -1,7 +1,7 @@
 """Module importing the admin panels"""
 
 from django.contrib import admin
-from .models import Recipe, RecipeIngredient
+from .models import Recipe, RecipeIngredient, Ingredient
 
 class RecipeInLine(admin.TabularInline):
     """Class representing an Inline Admin"""
@@ -14,4 +14,9 @@ class RecipeAdmin(admin.ModelAdmin):
     inlines = [RecipeInLine,]
     model = Recipe
 
+class IngredientAdmin(admin.ModelAdmin):
+    """Class for the Admin panel of Ingredient model"""
+    model = Ingredient
+
 admin.site.register(Recipe, RecipeAdmin)
+admin.site.register(Ingredient, IngredientAdmin)

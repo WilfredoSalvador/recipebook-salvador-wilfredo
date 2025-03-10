@@ -6,6 +6,16 @@
 		{% block styles %}{% endblock %}
     </head>
     <body>
-		{% block content %}{% endblock %}
+      <h1> Recipe Book </h1>  
+		{% block content %}
+    {% endblock %}
+    {% if request.user.is_authenticated %}
+      <form method="POST" action="{% url 'logout'%}">
+          {% csrf_token %}
+          <button type="submit">Logout</button>
+      </form>
+      {% else %}
+      <a href="{% url 'login'%}">Login</a>    
+      {% endif %}
     </body>
 </html>

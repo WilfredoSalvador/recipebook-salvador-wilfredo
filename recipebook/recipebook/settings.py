@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ledger'
+    'ledger',
+    'UserAccounts',
 ]
 
 MIDDLEWARE = [
@@ -110,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Manila'
 
 USE_I18N = True
 
@@ -121,6 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = '/recipes/list'
+LOGOUT_REDIRECT_URL = '/accounts/login'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type

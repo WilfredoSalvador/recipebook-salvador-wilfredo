@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.urls import reverse
+from UserAccounts.models import Profile
 
 class Ingredient(models.Model):
     """Class representing an ingredient in the recipe."""
@@ -20,11 +21,26 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
     """Class representing a recipe in the recipe book."""
 
+    Author = models.ForeignKey(
+        Profile,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='Author',)
     name = models.CharField(max_length=50)
+    created_on = models.DateTimeField(auto_now_add=True, null=True)
+    updated_on = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         """Function returning recipe name."""
         return self.name
+    
+    def get_created(self):
+        """Function returning date recipe was created."""
+        return self.created_on
+    
+    def get_updated(self):
+        """fFunction returning date recipe was last updated."""
+        return self.updated_on
 
     def get_absolute_url(self):
         """Function returning url of recipe details."""

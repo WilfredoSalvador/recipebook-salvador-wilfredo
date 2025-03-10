@@ -5,7 +5,8 @@
 {% block title %}Recipe Book{% endblock %}
 {% block content %}
         <ul>
-            <h1> Recipe Book </h1>
+            <h1> {{object.name}} </h1>
+            <p> Author: {{object.Author.name}}</p>
             {% for ingredient in object.ingredients.all %}
             <li>{{ ingredient.ingredient.name }} {{ingredient.quantity}}</li>
             {% endfor %}

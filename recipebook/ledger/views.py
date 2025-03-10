@@ -2,6 +2,7 @@
 from django.http import HttpResponse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
 
 def index(request):
@@ -19,3 +20,4 @@ class RecipeDetail(DetailView):
 
     model = Recipe
     template_name = "recipe/detail.html"
+    redirect_field_name = "registration/login.html"
