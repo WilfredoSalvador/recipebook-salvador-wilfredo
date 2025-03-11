@@ -15,7 +15,7 @@ class RecipeList(ListView):
     model = Recipe
     template_name = "recipes/list.html"
 
-class RecipeDetail(DetailView):
+class RecipeDetail(LoginRequiredMixin, DetailView):
     """Class viewing a recipe in detail."""
 
     model = Recipe

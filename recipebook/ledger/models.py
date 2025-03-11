@@ -33,13 +33,13 @@ class Recipe(models.Model):
     def __str__(self):
         """Function returning recipe name."""
         return self.name
-    
+
     def get_created(self):
         """Function returning date recipe was created."""
         return self.created_on
-    
+
     def get_updated(self):
-        """fFunction returning date recipe was last updated."""
+        """Function returning date recipe was last updated."""
         return self.updated_on
 
     def get_absolute_url(self):
