@@ -6,8 +6,9 @@ function based views
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe, RecipeImage
 from .forms import RecipeForm, RecipeImageForm
@@ -27,11 +28,10 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
         return reverse_lazy('ledger:recipe-list')
     redirect_field_name = "registration/login.html"
 
-class RecipeUpdateView(LoginRequiredMixin, UpdateView):
+class RecipeDetailView(LoginRequiredMixin, DetailView):
     """Class for recipe details using an UpdateView."""
     model = Recipe
     template_name = "recipe/detail.html"
-    form_class = RecipeImageForm
     redirect_field_name = "registration/login.html"
 
 @login_required(redirect_field_name="registration/login.html")
