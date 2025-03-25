@@ -6,7 +6,11 @@
 {% block content %}
         <ul>
             <h1> {{object.name}} </h1>
-            <p> <b>Author:</b> {{object.Author.name}}</p>
+            <p> <b>Author:</b> {{object.author.name}}</p>
+            {% for image in object.recipe.all %}
+            <img src="{{ image.image.url }}" alt="{{image.description}}" width="500px">
+            {% endfor %}
+            <a href="{% url 'ledger:add-image' pk=recipe.pk %}">Add images</a>
             {% for ingredient in object.ingredients.all %}
             <li><b>Name:</b> {{ ingredient.ingredient.name }} <b>Amount Needed:</b> {{ingredient.quantity}}</li>
             {% endfor %}

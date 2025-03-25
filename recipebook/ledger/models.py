@@ -13,19 +13,14 @@ class Ingredient(models.Model):
         """Function returning ingredient name."""
         return self.name
 
-    def get_absolute_url(self):
-        """Function returning url of ingredient details."""
-        return reverse('ingredient_detail', args=[str(self.pk)])
-
-
 class Recipe(models.Model):
     """Class representing a recipe in the recipe book."""
 
-    Author = models.ForeignKey(
+    author = models.ForeignKey(
         Profile,
         on_delete=models.SET_NULL,
         null=True,
-        related_name='Author',)
+        related_name='author',)
     name = models.CharField(max_length=50)
     created_on = models.DateTimeField(auto_now_add=True, null=True)
     updated_on = models.DateTimeField(auto_now=True, null=True)
@@ -57,3 +52,13 @@ class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.SET_NULL, null=True,
         related_name='ingredients',)
+
+class RecipeImage(models.Model):
+    """Class to create """
+    image = models.ImageField(upload_to="images/", default=None)
+    description = models.CharField(max_length=255)
+    recipe = models.ForeignKey(
+        Recipe,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='recipe',)
